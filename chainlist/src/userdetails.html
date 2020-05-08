@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>Hospital Appointment</title>
+
+  <!-- Bootstrap -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+  <!-- Application -->
+  <link href="css/app.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <div className="divStyle" >
+        <form className="container" onSubmit={this.submitLogin}>
+            <h1  align="center" >The Patient Details</h1>
+            <table align="center">
+                <tr>
+                    <th>User ID</th>
+                    <th>User Details</th>
+                </tr>
+                <tr>
+                    <td><strong>003_1</strong></td>
+                    <td>
+                        <div align="center">
+                            <button type="button" class="btn btn-info " >
+                                <a href= "userdetails003.html">Patient 003_1</a>
+                              </button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>004_1</strong></td>
+                    <td>
+                        <div align="center">
+                            <button type="button" class="btn btn-info " >
+                                <a href= "userdetails004.html">Patient 004_1</a>
+                              </button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>005_2</strong></td>
+                    <td>
+                        <div align="center">
+                            <button type="button" class="btn btn-info " >
+                                <a href= "userdetails005.html">Patient 005_2</a>
+                              </button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>006_1</strong></td>
+                    <td>
+                        <div align="center">
+                            <button type="button" class="btn btn-info " >
+                                <a href= "userdetails006.html">Patient 006_1</a>
+                              </button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>007_1</strong></td>
+                    <td>
+                        <div align="center">
+                            <button type="button" class="btn btn-info " >
+                                <a href= "userdetails007.html">Patient 007_1</a>
+                              </button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>008_2</strong></td>
+                    <td>
+                        <div align="center">
+                            <button type="button" class="btn btn-info " >
+                                <a href= "userdetails008.html">Patient 008_2</a>
+                              </button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>009_2</strong></td>
+                    <td>
+                        <div align="center">
+                            <button type="button" class="btn btn-info " >
+                                <a href= "userdetails009.html">Patient 009_2</a>
+                              </button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>010_1</strong></td>
+                    <td>
+                        <div align="center">
+                            <button type="button" class="btn btn-info " >
+                                <a href= "userdetails010.html">Patient 010_1</a>
+                              </button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>011_2</strong></td>
+                    <td>
+                        <div align="center">
+                            <button type="button" class="btn btn-info " >
+                                <a href= "userdetails011.html">Patient 011_2</a>
+                              </button>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            </form>
+
+  </div>
+
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/web3.min.js"></script>
+  <script src="js/truffle-contract.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>
+
+<script>
+    $(document).ready(function(){
+     $('#load_data').click(function(){
+      $.ajax({
+       url:"http://localhost:3000//003_1.csv",
+       dataType:"text",
+       success:function(data)
+       {
+        var patient_data = data.split(/\r?\n|\r/);
+        var table_data = '<table class="table table-bordered table-striped">';
+        for(var count = 0; count<patient_data.length; count++)
+        {
+         var cell_data = patient_data[count].split(",");
+         table_data += '<tr>';
+         for(var cell_count=0; cell_count<cell_data.length; cell_count++)
+         {
+          if(count === 0)
+          {
+           table_data += '<th>'+cell_data[cell_count]+'</th>';
+          }
+          else
+          {
+           table_data += '<td>'+cell_data[cell_count]+'</td>';
+          }
+         }
+         table_data += '</tr>';
+        }
+        table_data += '</table>';
+        $('#patient_table').html(table_data);
+       }
+      });
+     });
+
+    });
+</script>
